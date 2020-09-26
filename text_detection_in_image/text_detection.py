@@ -11,6 +11,8 @@ response = rekognition_client.detect_text(
         'Bytes': file
     }
 )
+
+
 texts = []
 for text in response['TextDetections']:
     if(text['Type'] == "WORD"):

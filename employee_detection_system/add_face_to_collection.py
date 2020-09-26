@@ -1,19 +1,25 @@
 import boto3
 import base64
+import json
 
 rekognition_client = boto3.client('rekognition')
 
-file = open('img.jpg','rb').read()
+image_name = ['khadgi.jpg','dip.jpg','img.jpg']
 
-response = rekognition_client.index_faces(
-    CollectionId='sunit',
-    Image={
+for img in image_name:
+    file = open( img ,'rb').read()
+
+    response = rekognition_client.index_faces(
+        CollectionId='Geneses',
+        Image={
         'Bytes': file,
-    },
-    ExternalImageId='sunit'
-)
-print(response)
+        },
+        ExternalImageId='Geneses'
+    )
 
+#print(json.dumps(response, indent=4, sort_keys=True))
+
+    print(img + ' ' +'face added to Geneses Collection')
 
 
 
